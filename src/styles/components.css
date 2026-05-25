@@ -1,0 +1,518 @@
+/* ─── components.css ───────────────────────────────────────────
+   Reusable component styles — buttons, inputs, cards, tables.
+   Import this in App.jsx after index.css.
+   Every class here maps to something used in the JSX files.
+─────────────────────────────────────────────────────────────── */
+
+/* ════════════════════════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════════════════════════ */
+
+/* Primary CTA — gold background (Start, Next, Confirm) */
+.btn-primary {
+  background: var(--gold);
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  transition: background var(--transition);
+}
+.btn-primary:hover  { background: var(--gold-light); }
+.btn-primary:disabled {
+  background: var(--bg-surface);
+  color: var(--bg-raised);
+  cursor: not-allowed;
+}
+
+/* Ghost — muted background (Cancel, Back) */
+.btn-ghost {
+  background: var(--bg-raised);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  transition: background var(--transition);
+}
+.btn-ghost:hover { background: #3d5068; }
+
+/* Danger — red (End Game confirmation) */
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  transition: background var(--transition);
+}
+.btn-danger:hover { background: #dc2626; }
+
+/* Success — green (Confirm Round) */
+.btn-success {
+  background: #22c55e;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  transition: background var(--transition);
+}
+.btn-success:hover { background: #16a34a; }
+
+/* Size modifiers */
+.btn-sm   { padding: 8px 16px; font-size: 14px; }
+.btn-full { width: 100%; }
+
+/* Icon-only button (✕ close button) */
+.btn-icon {
+  background: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  padding: 0;
+  line-height: 1;
+}
+
+/* 3-button status group — full width, equal sized buttons */
+.status-btns {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Base style — all 3 buttons equal width */
+.btn-status {
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 12px;
+  background: var(--bg-raised);
+  color: var(--text-muted);
+  transition: all var(--transition);
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Unseen — glows grey/slate when active (default state) */
+.btn-status.unseen.active {
+  background: rgba(100, 116, 139, 0.3);
+  color: #cbd5e1;
+  box-shadow: 0 0 0 1.5px rgba(148, 163, 184, 0.6);
+}
+
+/* Seen — glows blue when active */
+.btn-status.seen.active {
+  background: var(--blue-bg);
+  color: var(--blue);
+  box-shadow: 0 0 0 1.5px rgba(59, 130, 246, 0.5);
+}
+
+/* Dubli — glows purple when active */
+.btn-status.dubli.active {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  box-shadow: 0 0 0 1.5px rgba(139, 92, 246, 0.5);
+}
+
+/* Role badges for Dubli in scoreboard/history */
+.role-badge.dubli { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+.role-label.dubli { color: #a78bfa; }
+
+/* ════════════════════════════════════════════════════════════
+   BUTTON GROUPS
+════════════════════════════════════════════════════════════ */
+
+/* Side-by-side row of buttons (e.g. Back + Next) */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Player count selector (3 / 4 / 5 Players) */
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+.btn-count {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 14px;
+  background: var(--bg-raised);
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.btn-count.active {
+  background: var(--gold);
+  color: #0f172a;
+}
+
+/* ════════════════════════════════════════════════════════════
+   INPUTS
+════════════════════════════════════════════════════════════ */
+
+/* Standard text input (player name fields) */
+.name-input {
+  flex: 1;
+  background: var(--bg-raised);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: box-shadow var(--transition);
+}
+.name-input:focus {
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+/* Maal number input (right-aligned value) */
+.maal-input {
+  width: 72px;
+  background: var(--bg-raised);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+  transition: box-shadow var(--transition);
+}
+.maal-input:focus { box-shadow: 0 0 0 2px var(--gold); }
+
+/* Denomination custom input */
+.denom-input {
+  flex: 1;
+  min-width: 80px;
+  background: var(--bg-raised);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  transition: box-shadow var(--transition);
+}
+.denom-input:focus { box-shadow: 0 0 0 2px var(--gold); }
+
+/* ════════════════════════════════════════════════════════════
+   CARDS
+════════════════════════════════════════════════════════════ */
+
+/* General surface card */
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SETUP SCREEN
+════════════════════════════════════════════════════════════ */
+.setup-container { width: 100%; max-width: 380px; }
+.setup-header    { text-align: center; margin-bottom: 32px; }
+.setup-logo      { font-size: 52px; margin-bottom: 8px; }
+.setup-title     { font-size: 28px; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+.setup-subtitle  { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+.setup-hint      { text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 12px; }
+
+/* Name input rows */
+.name-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.name-row    { display: flex; align-items: center; gap: 10px; }
+.name-badge  {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--bg-raised);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════════════
+   GAME HEADER
+════════════════════════════════════════════════════════════ */
+.game-header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.game-title        { color: var(--gold); font-weight: 700; font-size: 18px; }
+.game-meta         { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.game-header-info  { flex: 1; min-width: 0; }
+.game-header-actions { display: flex; gap: 8px; }
+
+/* ════════════════════════════════════════════════════════════
+   TAB BAR
+════════════════════════════════════════════════════════════ */
+.tab-bar {
+  background: var(--bg-surface);
+  display: flex;
+  border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition);
+}
+.tab-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ════════════════════════════════════════════════════════════
+   MODAL
+════════════════════════════════════════════════════════════ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+.modal-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 8px;
+}
+.modal-title   { font-weight: 700; font-size: 18px; margin-bottom: 6px; }
+.modal-body    { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
+.modal-actions { display: flex; gap: 12px; }
+
+/* ════════════════════════════════════════════════════════════
+   ROUND ENTRY
+════════════════════════════════════════════════════════════ */
+
+/* Animated step progress dots in the Round header */
+.step-dots { display: flex; gap: 4px; }
+.step-dot  {
+  height: 4px; width: 24px; border-radius: 4px;
+  background: var(--bg-raised);
+  transition: background var(--transition);
+}
+.step-dot.active { background: var(--gold); }
+
+/* Instruction text above the player list */
+.step-hint     { color: var(--text-secondary); font-size: 14px; margin-bottom: 4px; }
+.step-hint-sub { color: var(--text-muted); font-size: 12px; margin-bottom: 16px; }
+
+/* Player list */
+.player-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+
+/* A single player row */
+.player-row {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+.player-row.winner {
+  background: var(--gold-bg);
+  border-color: var(--gold-border);
+}
+
+/* Left side of a player row (avatar + name) — acts as a button */
+.player-row-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  background: none;
+  text-align: left;
+  color: var(--text-primary);
+  padding: 0;
+  min-width: 0;
+}
+.player-name {
+  font-weight: 600;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Maal input group (label + number input) */
+.maal-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.maal-label { color: var(--text-muted); font-size: 13px; }
+
+/* Greyed-out unseen block on the maal entry step */
+.unseen-block {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+.unseen-label { color: var(--bg-raised); font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.unseen-row   { display: flex; justify-content: space-between; padding: 4px 0; }
+.unseen-name  { color: var(--text-muted); font-size: 13px; }
+.unseen-dash  { color: var(--bg-raised); font-size: 13px; }
+
+/* Large point delta shown on the preview step */
+.delta { font-size: 22px; font-weight: 800; flex-shrink: 0; margin-left: 12px; }
+
+/* ════════════════════════════════════════════════════════════
+   SCORE & MONEY TABLE (shared styles)
+════════════════════════════════════════════════════════════ */
+
+/* Enables horizontal scroll on narrow screens */
+.table-scroll {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 300px; /* ensures readability on narrow phones */
+}
+
+/* Header cells */
+.th-round, .th-player {
+  padding: 10px 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.th-round  { text-align: left; padding-left: 14px; width: 70px; }
+.th-player { text-align: center; }
+
+/* Round info cell (left column) */
+.td-round {
+  padding: 10px 8px 10px 14px;
+  vertical-align: top;
+  border-top: 1px solid var(--border-dim);
+}
+.round-num    { font-weight: 700; font-size: 13px; color: var(--text-secondary); }
+.round-winner { font-size: 10px; color: var(--gold); margin-top: 2px; }
+
+/* Player data cell */
+.td-player {
+  padding: 10px 8px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 1px solid var(--border-dim);
+}
+.td-player .delta { font-size: 15px; margin-left: 0; }
+
+/* Small role/maal info under the score in each cell */
+.cell-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+.cell-maal { font-size: 10px; color: var(--text-muted); }
+
+/* Total row */
+.total-row { border-top: 2px solid var(--border); background: var(--gold-bg); }
+.td-total-label {
+  padding: 12px 8px 12px 14px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+.td-total      { padding: 12px 8px; text-align: center; }
+.total-score   { font-size: 17px; font-weight: 800; }
+
+/* ════════════════════════════════════════════════════════════
+   HISTORY TAB
+════════════════════════════════════════════════════════════ */
+.history-list { display: flex; flex-direction: column; gap: 8px; }
+
+.history-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Collapsed row (always visible) */
+.history-header {
+  width: 100%;
+  background: none;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-primary);
+  text-align: left;
+}
+.history-header-left { display: flex; align-items: center; gap: 12px; }
+.history-winner      { font-weight: 600; font-size: 14px; }
+.history-meta        { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.history-chevron     { color: var(--text-muted); font-size: 12px; }
+
+/* Number badge (shows round number) */
+.round-badge {
+  background: var(--bg-raised);
+  border-radius: 8px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Expanded detail rows */
+.history-detail {
+  border-top: 1px solid rgba(51, 65, 85, 0.6);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.history-row-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.history-row .delta { font-size: 15px; margin-left: 0; }
+.history-player-name { font-size: 14px; color: var(--text-primary); }
+.history-maal        { font-size: 11px; color: var(--text-muted); }
+
+/* ════════════════════════════════════════════════════════════
+   MONEY TAB
+════════════════════════════════════════════════════════════ */
+.denom-section { margin-bottom: 16px; }
+.denom-row     { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-denom {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 13px;
+  background: var(--bg-raised);
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.btn-denom.active {
+  background: var(--gold);
+  color: #0f172a;
+}
