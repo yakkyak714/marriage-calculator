@@ -170,6 +170,7 @@ input {
 .role-badge.gold  { background: var(--gold-bg);  color: var(--gold); }
 .role-badge.blue  { background: var(--blue-bg);  color: var(--blue); }
 .role-badge.muted { background: var(--bg-raised); color: var(--text-muted); }
+.role-badge.red { background: rgba(239, 68, 68, 0.15); color: #471111; }
 
 /* ── Empty state ────────────────────────────────────────────── */
 .empty-state {

@@ -26,7 +26,7 @@ export default function Game({ players, rounds, totals, onNewRound, onEnd }) {
   const [showConfirm, setShowConfirm] = useState(false);
 
   // Money tab state lives here so it persists when switching tabs
-  const [denom,  setDenom]  = useState(0.25); // selected denomination button
+  const [denom,  setDenom]  = useState(1); // selected denomination button
   const [custom, setCustom] = useState("");    // custom dollar value input
 
   // The effective denomination: custom input takes priority over button selection

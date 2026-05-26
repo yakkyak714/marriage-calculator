@@ -59,6 +59,7 @@ export default function Round({ players, roundNum, onConfirm, onBack }) {
       id: uid(), number: roundNum, winnerId,
       isDubliWin: isWinnerDubli,
       seenIds:  seenList.map(p => p.id),
+      dubliIds:  seenList.filter(p => statuses[p.id] === "dubli").map(p => p.id), 
       unseenIds,
       maals: Object.fromEntries(seenList.map(p => [p.id, parseInt(maals[p.id]) || 0])),
       deltas,

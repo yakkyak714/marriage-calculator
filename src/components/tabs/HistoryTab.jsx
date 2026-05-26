@@ -70,7 +70,7 @@ export default function HistoryTab({ players, rounds }) {
                   const isWinner = p.id === round.winnerId;
                   const isUnseen = (round.unseenIds || []).includes(p.id);
                   const maal     = round.maals?.[p.id];
-                  const roleClass = isWinner ? "gold" : isUnseen ? "muted" : "blue";
+                  const roleClass = isWinner ? "gold" : isUnseen ? "red" : "blue";
 
                   return (
                     <div key={p.id} className="history-row">

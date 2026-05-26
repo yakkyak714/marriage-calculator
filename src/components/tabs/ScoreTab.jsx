@@ -59,10 +59,15 @@ export default function ScoreTab({ players, totals, rounds }) {
                   const isUnseen = (round.unseenIds || []).includes(p.id);
                   const delta    = round.deltas?.[p.id] ?? 0;
                   const maal     = round.maals?.[p.id];
+                  const isDubli    = (round.dubliIds  || []).includes(p.id);
+                  const isDubliWin = isWinner && round.isDubliWin;
 
                   // Role abbreviation: W = Winner, S = Seen, U = Unseen
-                  const roleLabel = isWinner ? "W" : isUnseen ? "U" : "S";
-                  const roleClass = isWinner ? "gold" : isUnseen ? "muted" : "blue";
+                  const roleLabel = isWinner  ? (isDubliWin ? "WD" : "W")
+                                      : isUnseen  ? "U"
+                                      : isDubli   ? "D"
+                                      : "S";
+                  const roleClass = isWinner ? "gold" : isUnseen ? "red" : isDubli ? "dubli" : "blue";
 
                   return (
                     <td key={p.id} className="td-player">
