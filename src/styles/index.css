@@ -61,7 +61,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
 }
 
@@ -89,8 +88,6 @@ input {
 }
 
 /* ── Layout helpers ─────────────────────────────────────────── */
-
-/* Centers content vertically and horizontally — used by Setup */
 .screen-center {
   min-height: 100vh;
   background: var(--bg-base);
@@ -100,7 +97,6 @@ input {
   padding: 16px;
 }
 
-/* Full-height flex column — used by Game and Round */
 .game-screen {
   min-height: 100vh;
   background: var(--bg-base);
@@ -109,7 +105,6 @@ input {
   color: var(--text-primary);
 }
 
-/* Scrollable area below the header and tabs */
 .tab-content {
   flex: 1;
   overflow-y: auto;
@@ -129,7 +124,6 @@ input {
 }
 
 /* ── Score delta colors ─────────────────────────────────────── */
-/* Applied to point changes throughout the app */
 .delta          { font-weight: 800; }
 .delta.positive { color: var(--green); }
 .delta.negative { color: var(--red); }
@@ -147,30 +141,35 @@ input {
   font-size: 14px;
   flex-shrink: 0;
 }
-.avatar.gold    { background: var(--gold); color: #0f172a; }
+.avatar.gold    { background: var(--gold);    color: #0f172a; }
 .avatar.blue    { background: var(--blue-bg); color: var(--blue); }
 .avatar.neutral { background: var(--bg-raised); color: var(--text-secondary); }
 
-/* ── Role badges ────────────────────────────────────────────── */
-.role-label {
-  font-size: 11px;
-  margin-top: 2px;
-}
+/* ── Role labels (text below player name) ───────────────────── */
+.role-label       { font-size: 11px; margin-top: 2px; }
 .role-label.gold  { color: var(--gold); }
 .role-label.blue  { color: var(--blue); }
 .role-label.muted { color: var(--text-muted); }
+.role-label.red   { color: var(--red); }
+.role-label.dubli { color: #a78bfa; }
 
+/* ── Role badges (W / S / D / U pills in scoreboard) ───────────
+   ALL badge color variants live here in one place.            */
 .role-badge {
   font-size: 10px;
   font-weight: 700;
   padding: 2px 7px;
   border-radius: 20px;
   flex-shrink: 0;
+  display: inline-flex;   /* keeps badge from stretching */
+  align-items: center;    /* centers text vertically inside badge */
+  line-height: 1;         /* fixes U misalignment — removes inherited line-height gap */
 }
-.role-badge.gold  { background: var(--gold-bg);  color: var(--gold); }
-.role-badge.blue  { background: var(--blue-bg);  color: var(--blue); }
-.role-badge.muted { background: var(--bg-raised); color: var(--text-muted); }
-.role-badge.red { background: rgba(239, 68, 68, 0.15); color: #471111; }
+.role-badge.gold  { background: var(--gold-bg);                color: var(--gold); }
+.role-badge.blue  { background: var(--blue-bg);                color: var(--blue); }
+.role-badge.muted { background: var(--bg-raised);              color: var(--text-muted); }
+.role-badge.red   { background: rgba(239, 68, 68, 0.15);       color: var(--red); }
+.role-badge.dubli { background: rgba(139, 92, 246, 0.15);      color: #a78bfa; }
 
 /* ── Empty state ────────────────────────────────────────────── */
 .empty-state {

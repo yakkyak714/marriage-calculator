@@ -79,9 +79,7 @@ export default function ScoreTab({ players, totals, rounds }) {
                       <div className="cell-meta">
                         <span className={`role-badge ${roleClass}`}>{roleLabel}</span>
                         {/* Only show maal for seen/winner players */}
-                        {!isUnseen && maal !== undefined && (
-                          <span className="cell-maal">{maal}m</span>
-                        )}
+                        <span className="cell-maal">{!isUnseen && maal !== undefined ? `${maal}m` : "-"}</span>
                       </div>
                     </td>
                   );
